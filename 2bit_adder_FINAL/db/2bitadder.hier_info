@@ -1,0 +1,114 @@
+|adder2_7segment
+A[0] => adder2:scitacka.A[0]
+A[1] => adder2:scitacka.A[1]
+B[0] => adder2:scitacka.B[0]
+B[1] => adder2:scitacka.B[1]
+Cin => adder2:scitacka.Cin
+s0 << bcd7segmentvhdl:displej.s0
+s1 << bcd7segmentvhdl:displej.s1
+s2 << bcd7segmentvhdl:displej.s2
+s3 << bcd7segmentvhdl:displej.s3
+s4 << bcd7segmentvhdl:displej.s4
+s5 << bcd7segmentvhdl:displej.s5
+s6 << bcd7segmentvhdl:displej.s6
+
+
+|adder2_7segment|adder2:scitacka
+A[0] => adder:prvni.a
+A[1] => adder:druha.a
+B[0] => adder:prvni.b
+B[1] => adder:druha.b
+Cin => adder:prvni.cin
+S[0] <= adder:prvni.s
+S[1] <= adder:druha.s
+Cout <= adder:druha.cout
+
+
+|adder2_7segment|adder2:scitacka|adder:prvni
+a => Equal0.IN2
+a => Equal1.IN1
+a => Equal2.IN1
+a => Equal3.IN2
+a => Equal4.IN2
+a => Equal5.IN2
+a => Equal6.IN0
+b => Equal0.IN1
+b => Equal1.IN2
+b => Equal2.IN0
+b => Equal3.IN1
+b => Equal4.IN1
+b => Equal5.IN0
+b => Equal6.IN2
+cin => Equal0.IN0
+cin => Equal1.IN0
+cin => Equal2.IN2
+cin => Equal3.IN0
+cin => Equal4.IN0
+cin => Equal5.IN1
+cin => Equal6.IN1
+s <= s.DB_MAX_OUTPUT_PORT_TYPE
+cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|adder2_7segment|adder2:scitacka|adder:druha
+a => Equal0.IN2
+a => Equal1.IN1
+a => Equal2.IN1
+a => Equal3.IN2
+a => Equal4.IN2
+a => Equal5.IN2
+a => Equal6.IN0
+b => Equal0.IN1
+b => Equal1.IN2
+b => Equal2.IN0
+b => Equal3.IN1
+b => Equal4.IN1
+b => Equal5.IN0
+b => Equal6.IN2
+cin => Equal0.IN0
+cin => Equal1.IN0
+cin => Equal2.IN2
+cin => Equal3.IN0
+cin => Equal4.IN0
+cin => Equal5.IN1
+cin => Equal6.IN1
+s <= s.DB_MAX_OUTPUT_PORT_TYPE
+cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|adder2_7segment|BCD7segmentVHDL:displej
+a => s0.IN0
+a => s1.IN0
+a => s2.IN1
+a => s3.IN0
+a => s3.IN0
+a => s4.IN0
+b => s0.IN1
+b => s1.IN0
+b => s4.IN1
+b => s0.IN0
+b => s2.IN0
+b => s3.IN1
+b => s3.IN1
+c => s0.IN1
+c => s2.IN1
+c => s3.IN1
+c => s5.IN1
+c => s5.IN1
+c => s0.IN1
+c => s1.IN1
+c => s1.IN1
+c => s3.IN1
+c => s4.IN1
+d => s0.IN1
+d => s1.IN1
+d => s3.IN1
+s0 <= s0.DB_MAX_OUTPUT_PORT_TYPE
+s1 <= s1.DB_MAX_OUTPUT_PORT_TYPE
+s2 <= s2.DB_MAX_OUTPUT_PORT_TYPE
+s3 <= s3.DB_MAX_OUTPUT_PORT_TYPE
+s4 <= s4.DB_MAX_OUTPUT_PORT_TYPE
+s5 <= s5.DB_MAX_OUTPUT_PORT_TYPE
+s6 <= s6.DB_MAX_OUTPUT_PORT_TYPE
+
+

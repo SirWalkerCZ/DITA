@@ -1,0 +1,31 @@
+library
+IEEE;
+IEEE.STD LOGIC 1164 . ALL
+use
+entity BCD7 segmentVHDL is
+std logic;
+port (a, b, c, d
+• in
+out std logic) ;
+s0,s1,s2,s3,s4,s5,s6
+BCD7 segmentVHDL ;
+architecture
+begin
+(not a
+(a
+and
+end
+RTL;
+RTL
+and
+not
+of BCD7 segmentVHDL is
+not
+b and
+and
+c) or (a
+and not
+and not
+and not
+c) or (not a and b and
+c);

@@ -1,0 +1,69 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.numeric_std.ALL;
+
+entity adder is
+    port (a, b, cin : in std_logic;
+          s, cout : out std_logic);
+end adder;
+
+architecture Behavioral_concurrent of adder is 
+signal vstup : std_logic_vector(2 downto 0); 
+
+signal vystup : std_logic_vector(1 downto 0);
+
+begin 
+vstup<=cin&b&a; 
+
+--1. zadání
+ 
+process(vstup)
+begin
+case vstup is
+when "000" => vystup<="00";
+when "001" => vystup<="01";
+when "010" => vystup<="01";
+when "011" => vystup<="10";
+when "100" => vystup<="01";
+when "101" => vystup<="10";
+when "110" => vystup<="10";
+when "111" => vystup<="11";
+when others => vystup <="00";
+end case;
+s <= vystup(0);
+cout <= vystup(1);
+end process;
+
+end Behavioral_concurrent;
+
+
+
+architecture Behavioral_seq of adder is
+    signal vstup : std_logic_vector(2 downto 0);
+    signal vystup : std_logic_vector(1 downto 0);
+begin
+vstup<=cin&a&b;
+  process(vstup)
+    begin
+        case vstup is
+            when "000" => vystup <= "00";
+            when "001" | "010" | "100" => vystup <= "01";
+            when "011" | "101" | "110" => vystup <= "10";
+            when "111" => vystup <= "11";
+            when others => vystup <= "00";
+        end case;
+        s <= vystup(0);
+        cout <= vystup(1);
+    end process;
+
+
+end Behavioral_seq;
+
+architecture RTL of adder is
+    signal vstup : std_logic_vector(2 downto 0);
+    signal vystup : std_logic_vector(1 downto 0);
+begin
+vstup<=cin&a&b;
+s <= ((a xor b) xor cin);
+cout <=  ((a and b) or (cin and (a xor b)));
+end RTL;

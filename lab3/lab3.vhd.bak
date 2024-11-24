@@ -1,0 +1,36 @@
+library IEEE; 
+use IEEE.STD_LOGIC_1164.ALL; 
+use IEEE.numeric_std.ALL; 
+entity adder is 
+port (a,b,cin : in std_logic; 
+s,cout : out std_logic); 
+end adder; 
+architecture Behavioral_concurrent of adder is 
+signal vstup : std_logic_vector(2 downto 0); 
+begin 
+vstup<=cin&b&a; 
+
+--When else zpÅ¯sob
+
+s <= 1 when (a xor b xor cin) = 1 else
+ 0;
+cout <= 1 when ((a and b) or cin and (a xor b)) == 1 else
+ 0;
+
+-- bool algebra
+s = a xor b xor c
+cout =  ((a and b) or cin and (a xor b))
+
+-- konverze
+signal va : stdl_logic_vector(0 downto 0);
+va <= a;
+signal vb : stdl_logic_vector(0 downto 0);
+va <= b;
+signal vcin : stdl_logic_vector(0 downto 0);
+va <= cin;
+signal out : stdl_logic_vector(1 downto 0);
+va <= std_logic_vector(unsigned(a) + unsigned(b) + unsigned(cin));
+cout = va(1);
+s = va(0);
+
+end Behavioral_concurrent;
